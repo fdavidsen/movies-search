@@ -9,7 +9,7 @@ function searchMovies() {
 		},
 		success: function(data) {
 			$('#movies-list').empty();
-			
+
 			if (data.Response == 'True') {
 				data.Search.forEach(function(item) {
 					let poster = item.Poster;
