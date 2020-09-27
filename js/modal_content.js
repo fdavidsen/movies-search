@@ -42,6 +42,7 @@ $('#movies-title').on('keyup', function(event) {
 });
 
 $('#movies-list').on('click', '.modal-trigger', function() {
+	$('#movie-detail .progress').removeClass('hide');
 	$.ajax({
 		url: 'https://www.omdbapi.com/',
 		type: 'GET',
@@ -88,6 +89,7 @@ $('#movies-list').on('click', '.modal-trigger', function() {
       }
 
 			$('#movie-detail .modal-content').html('<h4 class="center">' + data.Title + '</h4><div class="row"><div class="content-center"><img src="' + poster + '" class="responsive-img"></div></div>' + plot + '<table class="striped centered"><tbody>' + tbody + '</tbody></table></div>');
+			$('#movie-detail .progress').addClass('hide');
 		}
 	});
 });

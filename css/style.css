@@ -57,3 +57,11 @@
 #movie-detail table {
 	margin-top: 2rem;
 }
+#movie-detail .progress {
+  position: absolute;
+	width: 50%;
+	margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
