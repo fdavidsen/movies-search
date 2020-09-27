@@ -1,4 +1,6 @@
 function searchMovies() {
+	$('.preloader-wrapper').addClass('active');
+
 	$.ajax({
 		url: 'https://www.omdbapi.com/',
 		type: 'GET',
@@ -20,9 +22,12 @@ function searchMovies() {
 					$('#movies-list').append('<div class="col m4 s12"><div class="card"><div class="card-image"><img src="' + poster + '"><a class="btn-floating halfway-fab waves-effect waves-light brown darken-1 modal-trigger" data-target="movie-detail" data-id="' + item.imdbID + '"><i class="material-icons">add</i></a></div><div class="card-content"><span class="card-title">' + item.Title + '</span></div></div></div>');
 				});
 			} else {
-      $('#movies-list').append('<div class="card-panel col m6 offset-m3 s10 offset-s1 center yellow accent-1">' + data.Error + '</div>');
+      	$('#movies-list').append('<div class="content-center"><div class="alert">' + data.Error + '</div></div>');
 			}
+
 			$('#movies-title').val('');
+			$('#movies-list').css('margin-top', '-9rem');
+			$('.preloader-wrapper').removeClass('active');
 		}
 	});
 }
@@ -82,7 +87,7 @@ $('#movies-list').on('click', '.modal-trigger', function() {
       	tbody += '<tr><td>Writer</td><td>' + data.Writer + '</td></tr>';
       }
 
-			$('#movie-detail .modal-content').html('<h4 class="center">' + data.Title + '</h4><div class="row"><div class="flexbox"><img src="' + poster + '" class="responsive-img"></div></div>' + plot + '<table class="striped centered"><tbody>' + tbody + '</tbody></table></div>');
+			$('#movie-detail .modal-content').html('<h4 class="center">' + data.Title + '</h4><div class="row"><div class="content-center"><img src="' + poster + '" class="responsive-img"></div></div>' + plot + '<table class="striped centered"><tbody>' + tbody + '</tbody></table></div>');
 		}
 	});
 });
